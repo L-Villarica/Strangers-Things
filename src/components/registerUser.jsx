@@ -7,7 +7,7 @@ export default function RegisterUser() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); 
+  const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   async function handleSubmit(event) {
     event.preventDefault();
@@ -32,7 +32,7 @@ export default function RegisterUser() {
       });
 
       const result = await response.json();
-      console.log(result)
+      console.log(result);
       if (response.ok) {
         setSuccessMessage("Registration successful!");
       } else {
@@ -49,14 +49,16 @@ export default function RegisterUser() {
       <h2>Sign Up Here</h2>
       <form onSubmit={handleSubmit}>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
-        {successMessage && <div className="success-message">{successMessage}</div>}
+        {successMessage && (
+          <div className="success-message">{successMessage}</div>
+        )}
         <label>Username:</label>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter Username"
-          minLength="8"
+          minLength="1"
           maxLength="15"
           required
         />
@@ -66,7 +68,7 @@ export default function RegisterUser() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter Password"
-          minLength="8"
+          minLength="1"
           maxLength="15"
           required
         />
@@ -76,7 +78,7 @@ export default function RegisterUser() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="Confirm Password"
-          minLength="8"
+          minLength="1"
           maxLength="15"
           required
         />
